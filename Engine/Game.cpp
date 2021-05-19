@@ -27,7 +27,8 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	ball(Vec2 (300.0f, 300.0f), Vec2(100.0f, 100.0f))
+	ball(Vec2 (300.0f, 300.0f), Vec2(300.0f, 300.0f)),
+	walls(0.0f, float (gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight))
 {
 }
 
@@ -43,11 +44,12 @@ void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 	ball.Update(dt);
+	ball.DoWallCollision(walls);
 }
 
 void Game::ComposeFrame()
 {
-	
+	//seba
 	ball.Draw(gfx);
 
 
